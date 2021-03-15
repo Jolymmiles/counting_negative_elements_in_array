@@ -5,9 +5,10 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.Locale;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class TestMain {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -33,10 +34,14 @@ public class TestMain {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
 
         Main.main(null);
-        String expected = "2 -11";
-        String actual = outContent.toString();
+        int[] expected = new int[]{2, -11};
+        int[] actual = Arrays.stream(
+                outContent.toString()
+                        .replaceAll("[\\r\\n]", "")
+                        .split(" ")
+        ).mapToInt(Integer::parseInt).toArray();
 
-        assertEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -45,10 +50,14 @@ public class TestMain {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
 
         Main.main(null);
-        String expected = "7 -43";
-        String actual = outContent.toString();
+        int[] expected = new int[]{7, -43};
+        int[] actual = Arrays.stream(
+                outContent.toString()
+                        .replaceAll("[\\r\\n]", "")
+                        .split(" ")
+        ).mapToInt(Integer::parseInt).toArray();
 
-        assertEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -57,10 +66,14 @@ public class TestMain {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
 
         Main.main(null);
-        String expected = "0 0";
-        String actual = outContent.toString();
+        int[] expected = new int[]{0, 0};
+        int[] actual = Arrays.stream(
+                outContent.toString()
+                        .replaceAll("[\\r\\n]", "")
+                        .split(" ")
+        ).mapToInt(Integer::parseInt).toArray();
 
-        assertEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -69,10 +82,14 @@ public class TestMain {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
 
         Main.main(null);
-        String expected = "0 0";
-        String actual = outContent.toString();
+        int[] expected = new int[]{0, 0};
+        int[] actual = Arrays.stream(
+                outContent.toString()
+                        .replaceAll("[\\r\\n]", "")
+                        .split(" ")
+        ).mapToInt(Integer::parseInt).toArray();
 
-        assertEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -81,9 +98,13 @@ public class TestMain {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
 
         Main.main(null);
-        String expected = "0 0";
-        String actual = outContent.toString();
+        int[] expected = new int[]{0, 0};
+        int[] actual = Arrays.stream(
+                outContent.toString()
+                        .replaceAll("[\\r\\n]", "")
+                        .split(" ")
+        ).mapToInt(Integer::parseInt).toArray();
 
-        assertEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 }
